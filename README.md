@@ -1,1 +1,4 @@
 # softtnc
+## Installation
+
+## Running
