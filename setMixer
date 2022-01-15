@@ -1,0 +1,11 @@
+#!/bin/bash
+# Set Microphone levels, mute loopback
+amixer -c1 sset Mic playback 100% cap unmute
+amixer -c1 sset Mic capture 50% cap unmute
+
+# Set Headphone level
+amixer -c1 sset Speaker playback 100% cap unmute
+
+# Disable auto gain control
+amixer -c1 sset 'Auto Gain Control' cap mute
+
