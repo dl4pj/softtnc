@@ -1,0 +1,23 @@
+#!/usr/bin/bash
+
+if [[ "$1" = "stop" || "$1" = "restart" ]]
+then
+    echo "Stopping kissattach..."
+    sudo killall kissattach
+    echo "Stopping direwolf..."
+    killall direwolf
+    echo "Removing /tmp/kisstnc"
+    sudo rm -f /tmp/kisstnc
+    sleep 3
+fi
+
+if [[ "$1" = "restart" || "$1" = "start" ]]
+then
+    echo "Starting direwolf..."
+    direwolf -c ~/softtnc/direwolf.conf -p &
+    sleep 3
+    sudo kissattach $(ls -l /tmp/kisstnc | awk '{print $NF}') wl2k
+    sudo kissparms -c 1 -p wl2k
+fi
+
+
